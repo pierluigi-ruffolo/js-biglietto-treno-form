@@ -12,18 +12,68 @@
     />
   </head>
   <body>
-    <form action="">
-      <label for="chilometri">Km da Percorrere:</label>
-      <input type="number" id="chilometri" />
-      <label for="eta">Inserisci Eta:</label>
-      <select name="eta" id="eta">
-        <option value="Minorenne">Minorenne</option>
-        <option value="Maggiorenne">Maggiorenne</option>
-        <option value="Over">Over-65</option>
-      </select>
-      <button type="submit">Genera</button>
-    </form>
-    <div class="resalt"></div>
+    <div class="wrap min-vh-100 bg-dark bg-gradient w-100">
+      <h1 class="text-center p-2 text-white">Calcolo Biglietto!!</h1>
+      <div class="container">
+        <div class="row">
+          <!-- colonna con form e input -->
+          <div class="col-12 col-lg-6">
+            <form action="">
+              <div class="mb-3">
+                <label for="nome-cognome" class="form-label text-white"
+                  >Nome Cognome</label
+                >
+                <input type="text" class="form-control" id="nome-cognome" />
+              </div>
+              <div class="mb-3">
+                <label for="chilometri" class="form-label text-white"
+                  >Km da Percorrere</label
+                >
+                <input type="number" class="form-control" id="chilometri" />
+              </div>
+              <select
+                class="form-select mt-4"
+                aria-label="Default select example"
+              >
+                <option selected disabled>Fascia eta</option>
+                <option value="Minorenne">Minorenne</option>
+                <option value="Maggiorenne">Maggiorenne</option>
+                <option value="Over">Over-65</option>
+              </select>
+              <button type="submit" class="btn btn-outline-success mt-5 w-100">
+                Genera
+              </button>
+              <button type="reset" class="btn btn-outline-danger mt-3 w-100">
+                Annulla
+              </button>
+            </form>
+          </div>
+          <!-- fine colonna forme input -->
+
+          <!-- inizio colonna risultato -->
+          <div class="col-12 col-lg-5 mt-4 ms-lg-5">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="text-center">Nome Passeggero</h4>
+                <h6 class="text-center mt-3">Pierluigi Ruffolo</h6>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Offerta</h5>
+                <p class="card-text">Biglietto standard</p>
+                <h5 class="card-title">Carrozza</h5>
+                <p class="card-text">5</p>
+                <h5 class="card-title">Codice cp</h5>
+                <p class="card-text">9000</p>
+                <h5 class="card-title">Costo biglietto</h5>
+                <p class="card-text">2.10$</p>
+              </div>
+            </div>
+          </div>
+          <!-- fine colonna risultato -->
+        </div>
+      </div>
+    </div>
+
     <script src="./javascript/script.js"></script>
   </body>
 </html>

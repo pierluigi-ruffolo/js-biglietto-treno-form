@@ -31,6 +31,6 @@ function elaborazioneBiglietto(km, eta) {
   }
 }
 
-function risultatoInPagina(risultato) {
-  resalt.innerHTML = ` Il prezzo del tuo biglietto è €${risultato}`;
+function risultatoInPagina(prezzo) {
+  resalt.innerHTML = ` Il prezzo del tuo biglietto è €${prezzo}`;
 }
