@@ -12,6 +12,18 @@
     />
   </head>
   <body>
+    <form action="">
+      <label for="chilometri">Km da Percorrere:</label>
+      <input type="number" id="chilometri" />
+      <label for="eta">Inserisci Eta:</label>
+      <select name="eta" id="eta">
+        <option value="Minorenne">Minorenne</option>
+        <option value="Maggiorenne">Maggiorenne</option>
+        <option value="Over">Over-65</option>
+      </select>
+      <button type="submit">Genera</button>
+    </form>
+    <div class="resalt"></div>
     <script src="./javascript/script.js"></script>
   </body>
 </html>
