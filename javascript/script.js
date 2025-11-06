@@ -4,6 +4,7 @@ const nomeInput = document.querySelector("#nome-cognome");
 const kmInput = document.querySelector("#chilometri");
 const etaInput = document.querySelector("#select");
 const resalt = document.querySelector(".card");
+const colForm = document.querySelector(".col-form");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -45,22 +46,23 @@ function elaborazioneBiglietto(km, eta, name) {
 }
 
 function risultatoInPagina(prezzo, name, tariffa) {
+  colForm.classList.add("col-md-6");
   const numCarrozza = generaCarrozza();
   const numCp = generaCodiceCp();
   resalt.classList.remove("d-none");
-  resalt.innerHTML = `<div class="card-header">
+  resalt.innerHTML = `<div class="card-header bg-primary-subtle">
                 <h4 class="text-center">Nome Passeggero</h4>
                 <h6 class="text-center mt-3">${name}</h6>
               </div>
-              <div class="card-body">
+              <div class="card-body bg-transparent">
                 <h5 class="card-title">Offerta</h5>
-                <p class="card-text">${tariffa}</p>
+                <p class="card-text border-bottom fw-bold">${tariffa}</p>
                 <h5 class="card-title">Carrozza</h5>
-                <p class="card-text">${numCarrozza}</p>
+                <p class="card-text border-bottom fw-bold">${numCarrozza}</p>
                 <h5 class="card-title">Codice cp</h5>
-                <p class="card-text">${numCp}</p>
+                <p class="card-text border-bottom fw-bold">${numCp}</p>
                 <h5 class="card-title">Costo biglietto</h5>
-                <p class="card-text">${prezzo}$</p>
+                <p class="card-text border-bottom fw-bold">${prezzo}$</p>
               </div>`;
 }
 
@@ -74,5 +76,6 @@ function generaCodiceCp() {
 }
 
 form.addEventListener("reset", () => {
+  colForm.classList.remove("col-md-6");
   resalt.classList.add("d-none");
 });
