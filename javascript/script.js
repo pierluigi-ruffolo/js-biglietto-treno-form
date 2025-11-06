@@ -10,44 +10,69 @@ form.addEventListener("submit", (e) => {
   const name = nomeInput.value.trim();
   const km = parseInt(kmInput.value);
   const eta = etaInput.value;
-
   elaborazioneBiglietto(km, eta, name);
 });
 
 function elaborazioneBiglietto(km, eta, name) {
-  if (isNaN(km) || km <= 0 || name === "" || !isNaN(name)) {
+  if (
+    isNaN(km) ||
+    km <= 0 ||
+    name === "" ||
+    !isNaN(name) ||
+    eta === "Fascia eta"
+  ) {
     alert("Inserisci input validi");
   } else {
     const prezzoKm = 0.21;
     const prezzoBiglietto = km * prezzoKm;
     let risultatoNum = 0;
+    let tariffa = "";
     if (eta === "Minorenne") {
       risultatoNum = prezzoBiglietto * 0.8;
+      tariffa = "Sconto Under 17";
     } else if (eta === "Over") {
       risultatoNum = prezzoBiglietto * 0.6;
+      tariffa = "Sconto Over 65";
     } else {
       risultatoNum = prezzoBiglietto;
+      tariffa = "standard";
     }
+    console.log(tariffa);
     const risultatoFormattato = risultatoNum.toFixed(2);
 
-    risultatoInPagina(risultatoFormattato, name);
+    risultatoInPagina(risultatoFormattato, name, tariffa);
   }
 }
 
-function risultatoInPagina(prezzo, name) {
-  const nomePasseggero = name;
+function risultatoInPagina(prezzo, name, tariffa) {
+  const numCarrozza = generaCarrozza();
+  const numCp = generaCodiceCp();
+  resalt.classList.remove("d-none");
   resalt.innerHTML = `<div class="card-header">
                 <h4 class="text-center">Nome Passeggero</h4>
-                <h6 class="text-center mt-3">${nomePasseggero}</h6>
+                <h6 class="text-center mt-3">${name}</h6>
               </div>
               <div class="card-body">
                 <h5 class="card-title">Offerta</h5>
-                <p class="card-text">Biglietto standard</p>
+                <p class="card-text">${tariffa}</p>
                 <h5 class="card-title">Carrozza</h5>
-                <p class="card-text">5</p>
+                <p class="card-text">${numCarrozza}</p>
                 <h5 class="card-title">Codice cp</h5>
-                <p class="card-text">9000</p>
+                <p class="card-text">${numCp}</p>
                 <h5 class="card-title">Costo biglietto</h5>
                 <p class="card-text">${prezzo}$</p>
               </div>`;
 }
+
+function generaCarrozza() {
+  const numRandomCarrozza = Math.floor(Math.random() * 6) + 1;
+  return numRandomCarrozza;
+}
+function generaCodiceCp() {
+  const numRandomCp = Math.floor(Math.random() * 99999) + 1;
+  return numRandomCp;
+}
+
+form.addEventListener("reset", () => {
+  resalt.classList.add("d-none");
+});
