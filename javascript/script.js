@@ -5,6 +5,7 @@ const kmInput = document.querySelector("#chilometri");
 const etaInput = document.querySelector("#select");
 const resalt = document.querySelector(".card");
 const colForm = document.querySelector(".col-form");
+const errore = document.querySelector(".error");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -15,14 +16,11 @@ form.addEventListener("submit", (e) => {
 });
 
 function elaborazioneBiglietto(km, eta, name) {
-  if (
-    isNaN(km) ||
-    km <= 0 ||
-    name === "" ||
-    !isNaN(name) ||
-    eta === "Fascia eta"
-  ) {
-    alert("Inserisci input validi");
+  if (isNaN(km) || km <= 0 || name === "" || !isNaN(name) || eta === "") {
+    errore.innerHTML = "Inserisci input validi!!";
+    setTimeout(function () {
+      errore.innerHTML = "";
+    }, 3000);
   } else {
     const prezzoKm = 0.21;
     const prezzoBiglietto = km * prezzoKm;
@@ -52,7 +50,7 @@ function risultatoInPagina(prezzo, name, tariffa) {
   resalt.classList.remove("d-none");
   resalt.innerHTML = `<div class="card-header bg-primary-subtle">
                 <h4 class="text-center">Nome Passeggero</h4>
-                <h6 class="text-center mt-3">${name}</h6>
+                <h6 class="text-center mt-3 fw-bold fs-2">${name}</h6>
               </div>
               <div class="card-body bg-transparent">
                 <h5 class="card-title">Offerta</h5>
